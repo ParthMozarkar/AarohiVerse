@@ -131,3 +131,72 @@ body::after {
   background: radial-gradient(circle at center, rgba(255, 175, 205, 0.12), transparent 70%);
   pointer-events: none;
 }
+/* -------------------------
+   MOBILE RESPONSIVE FIXES
+--------------------------*/
+@media (max-width: 768px) {
+
+  body {
+    padding: 0 10px;
+    overflow-x: hidden;
+  }
+
+  #gate {
+    max-width: 100%;
+    padding: 0 10px;
+  }
+
+  #title {
+    font-size: 32px;
+    letter-spacing: 1px;
+    text-align: center;
+    white-space: normal;   /* allow wrapping on small screens */
+    line-height: 1.2;
+  }
+
+  .small {
+    font-size: 12px;
+    letter-spacing: 2px;
+  }
+
+  #message {
+    font-size: 14px;
+  }
+
+  #countdown {
+    font-size: 16px;
+    letter-spacing: 0.5px;
+    margin-bottom: 25px;
+  }
+
+  button {
+    width: 90%;
+    padding: 12px 20px;
+    font-size: 14px;
+  }
+
+  #notYet {
+    font-size: 12px;
+  }
+}
+
+/* Extra-small devices */
+@media (max-width: 480px) {
+
+  #title {
+    font-size: 26px;
+    line-height: 1.2;
+  }
+
+  #countdown {
+    font-size: 14px;
+  }
+
+  button {
+    width: 100%;
+    font-size: 13px;
+    padding: 12px 15px;
+  }
+}
+
+
