@@ -53,8 +53,13 @@ document.addEventListener("DOMContentLoaded", () => {
   const message = document.getElementById("message");
   const button = document.getElementById("enterBtn");
   const notYet = document.getElementById("notYet");
+  const lockIcon = document.querySelector(".lock-icon"); // NEW
 
-  // Early click message
+
+
+  // ---------------------------
+  // CLICK WHILE LOCKED
+  // ---------------------------
   button.addEventListener("click", () => {
     if (button.disabled) {
       notYet.style.opacity = 1;
@@ -65,7 +70,11 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  // ⭐ HOVER MESSAGE FOR LOCKED BUTTON
+
+
+  // ---------------------------
+  // HOVER MESSAGE FOR LOCKED BUTTON
+  // ---------------------------
   button.addEventListener("mouseenter", () => {
     if (button.disabled) {
       notYet.style.opacity = 1;
@@ -83,6 +92,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const distance = targetDate - now;
 
     if (distance <= 0) {
+      // --------- UNLOCK ---------
+
       message.innerHTML = "Welcome, Piyu 🌙";
       countdownEl.innerHTML = "The world is ready.";
       button.disabled = false;
@@ -91,12 +102,21 @@ document.addEventListener("DOMContentLoaded", () => {
 
       notYet.style.opacity = 0; // hide forever after unlock
 
+      // ⭐ HIDE LOCK ICON FOREVER
+      if (lockIcon) {
+        lockIcon.style.display = "none";
+      }
+
+      // Unlock navigation
       button.onclick = () => {
         window.location.href = "world.html";
       };
 
       return;
     }
+
+
+    // --------- STILL LOCKED ---------
 
     const days = Math.floor(distance / (1000 * 60 * 60 * 24));
     const hours = Math.floor((distance / (1000 * 60 * 60)) % 24);
