@@ -108,20 +108,17 @@ button.enabled {
   pointer-events: none; /* FIX button clicks */
 }
 
-/* NOT YET MESSAGE */
 #notYet {
   margin-top: 15px;
   font-size: 14px;
   color: #ff9acd;
   letter-spacing: 1px;
   opacity: 0;
-  transition: opacity 0.6s ease;
+  transition: opacity 0.4s ease;
   font-weight: 500;
   text-shadow: 0 0 10px rgba(255,150,200,0.4);
-  position: relative;
-  z-index: 10;
-  text-align: center;
 }
+
 
 /* CENTER SPOTLIGHT */
 body::after {
@@ -198,5 +195,6 @@ body::after {
     padding: 12px 15px;
   }
 }
+
 
 
