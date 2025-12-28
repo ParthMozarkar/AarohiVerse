@@ -195,6 +195,39 @@ body::after {
     padding: 12px 15px;
   }
 }
+/* LOCK ICON STYLE */
+.lock-icon {
+  margin-right: 8px;
+  font-size: 18px;
+  opacity: 0.8;
+  display: inline-block;
+  transform: translateY(0);
+  animation: lockBounce 2s ease-in-out infinite;
+  transition: opacity 0.3s ease, filter 0.3s ease;
+}
+
+/* Glow on hover when locked */
+button:disabled:hover .lock-icon {
+  opacity: 1;
+  filter: drop-shadow(0 0 6px rgba(255,150,200,0.8));
+}
+
+/* Bounce animation (subtle, premium) */
+@keyframes lockBounce {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-3px); }
+  100% { transform: translateY(0); }
+}
+
+/* Hide lock when button becomes enabled */
+button.enabled .lock-icon {
+  opacity: 0;
+  animation: none;
+  width: 0;
+  margin: 0;
+  overflow: hidden;
+}
+
 
 
 
