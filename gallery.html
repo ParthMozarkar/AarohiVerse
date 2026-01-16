@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Piyu's Photo Gallery</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Dancing+Script:wght@600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="gallery.css">
+</head>
+
+<body>
+
+    <!-- BACKGROUND -->
+    <div class="gallery-bg"></div>
+
+    <!-- GIFT OVERLAY -->
+    <div id="gift-overlay" class="gift-overlay">
+        <div class="gift-frame">
+            <div class="ribbon-v"></div>
+            <div class="ribbon-h"></div>
+            <div class="bow">
+                <div class="bow-knot"></div>
+                <div class="bow-tail-l"></div>
+                <div class="bow-tail-r"></div>
+            </div>
+            <div class="gift-label">
+                <h2>For Piyu ✨</h2>
+                <p>Click to hear your song & open your memories</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- CINEMATIC REVEAL OVERLAY -->
+    <div id="cinematic-reveal">
+        <div class="reveal-content">
+            <img src="" alt="" class="reveal-img">
+            <p class="reveal-quote"></p>
+        </div>
+    </div>
+
+    <!-- CONTENT -->
+    <div class="container">
+        <header class="gallery-header">
+            <h1>Moments in Time 📸</h1>
+            <p>A collection of beautiful memories</p>
+        </header>
+
+        <div id="gallery-grid" class="gallery-grid">
+            <!-- Gallery items will be populated by JS -->
+        </div>
+
+        <!-- BACK BUTTON -->
+        <button id="back-btn" onclick="window.location.href='world.html'">
+            ← Back to Piyuverse
+        </button>
+    </div>
+
+    <script src="audioManager.js"></script>
+    <script src="gallery.js"></script>
+</body>
+
+</html>

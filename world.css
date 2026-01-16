@@ -1,0 +1,180 @@
+/* RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+  overflow: hidden;
+  font-family: 'Poppins', system-ui, sans-serif;
+  background: radial-gradient(circle at center, #1a0f05, #050200 70%, #000);
+  color: #ffd9a0;
+  opacity: 0;
+  animation: fadeInWorld 1.5s ease-out forwards;
+}
+
+@keyframes fadeInWorld {
+  from {
+    opacity: 0;
+    filter: blur(10px);
+  }
+
+  to {
+    opacity: 1;
+    filter: blur(0);
+  }
+}
+
+/* MYSTICAL ENERGY BACKGROUND */
+#magic-bg {
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(circle at 20% 30%, rgba(255, 140, 0, 0.08), transparent 40%),
+    radial-gradient(circle at 80% 70%, rgba(255, 200, 120, 0.06), transparent 45%);
+  animation: float 14s infinite alternate ease-in-out;
+  z-index: -1;
+}
+
+@keyframes float {
+  from {
+    transform: scale(1);
+  }
+
+  to {
+    transform: scale(1.15);
+  }
+}
+
+/* TITLE */
+#world-title {
+  position: absolute;
+  top: 6%;
+  width: 100%;
+  text-align: center;
+  font-size: clamp(20px, 6vw, 36px);
+  padding: 0 10px;
+  letter-spacing: 1px;
+  text-shadow: 0 0 22px rgba(255, 160, 60, 0.7);
+}
+
+/* PORTAL LAYOUT */
+.portal-container {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: clamp(30px, 5vw, 80px);
+  flex-wrap: wrap;
+  padding: 80px 20px 40px;
+  overflow-y: auto;
+}
+
+/* DOCTOR STRANGE PORTAL */
+.portal {
+  position: relative;
+  width: clamp(220px, 20vw, 320px);
+  height: clamp(220px, 20vw, 320px);
+  border-radius: 50%;
+  cursor: pointer;
+  flex-shrink: 0;
+
+  /* Ritual ring glow */
+  box-shadow:
+    0 0 30px rgba(255, 140, 20, 0.7),
+    inset 0 0 40px rgba(255, 200, 120, 0.4);
+
+  /* Ring edge */
+  border: 3px solid rgba(255, 160, 60, 0.7);
+
+  /* Life */
+  animation: breathe 4.5s ease-in-out infinite;
+}
+
+/* Chaotic rotating outer rune ring */
+.portal::before {
+  content: "";
+  position: absolute;
+  inset: -20px;
+  border-radius: 50%;
+  border: 2px dashed rgba(255, 180, 80, 0.6);
+  animation: spinReverse 18s linear infinite;
+}
+
+/* Inner glow */
+.portal::after {
+  content: "";
+  position: absolute;
+  inset: 20px;
+  border-radius: 50%;
+  background: radial-gradient(circle,
+      rgba(255, 200, 120, 0.25),
+      transparent 65%);
+}
+
+/* LABEL */
+.portal span {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 20px;
+  font-size: 15px;
+  color: #ffd9a0;
+  z-index: 2;
+  text-shadow: 0 0 18px rgba(255, 180, 80, 0.9);
+}
+
+/* HOVER = PORTAL AWAKENS */
+.portal:hover {
+  transform: scale(1.12);
+  box-shadow:
+    0 0 60px rgba(255, 160, 40, 1),
+    inset 0 0 60px rgba(255, 220, 160, 0.6);
+}
+
+/* ANIMATIONS */
+@keyframes breathe {
+
+  0%,
+  100% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+@keyframes spinReverse {
+  from {
+    transform: rotate(360deg);
+  }
+
+  to {
+    transform: rotate(0deg);
+  }
+}
+
+/* MOBILE ADJUSTMENTS */
+@media (max-width: 600px) {
+  .portal-container {
+    padding-top: 120px;
+    align-content: flex-start;
+  }
+}
+
+.portal-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  z-index: 1;
+  pointer-events: none;
+}

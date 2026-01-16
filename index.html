@@ -8,9 +8,17 @@
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Poppins:wght@200;300;400;600&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Poppins:wght@200;300;400;600&display=swap"
+    rel="stylesheet">
 
   <link rel="stylesheet" href="style.css">
+  <style>
+    html,
+    body {
+      background-color: #000 !important;
+    }
+  </style>
 </head>
 
 <body>
@@ -19,23 +27,24 @@
 
   <!-- GATE CONTENT -->
   <div id="gate">
-
     <p class="small">No one else needs to.</p>
-
     <!-- TYPEWRITER TITLE -->
     <h1 id="title">This is your world.</h1>
-
     <div id="message"></div>
-
     <!-- countdown hidden initially -->
     <div id="countdown" style="opacity:0;"></div>
-
-    <button id="enterBtn" disabled>
-      <b>Enter Piyuverse</b>
+    <button id="enterBtn">
+      <span id="btnText">Enter Piyuverse</span>
     </button>
-
     <p id="notYet">Not yet, Piyu.</p>
+  </div>
 
+  <div id="transition-overlay">
+    <div class="loader-content">
+      <div class="loader-ring"></div>
+      <div class="loader-text">INITIALIZING PIYUVERSE...</div>
+      <div class="loader-progress">0%</div>
+    </div>
   </div>
 
   <!-- Scripts -->
@@ -44,4 +53,5 @@
   <script src="script.js"></script>
 
 </body>
+
 </html>

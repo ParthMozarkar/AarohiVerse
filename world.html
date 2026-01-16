@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Piyuverse Portals</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- STYLES -->
+  <link rel="stylesheet" href="world.css" />
+  <style>
+    html,
+    body {
+      background-color: #000 !important;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- MYSTICAL BACKGROUND -->
+  <div id="magic-bg"></div>
+
+  <!-- TITLE -->
+  <h1 id="world-title">Choose your portal, Piyu ✨</h1>
+
+  <!-- PORTALS -->
+  <div class="portal-container">
+
+    <!-- PORTAL 1 -->
+    <div class="portal" data-target="melody.html">
+      <canvas class="portal-canvas"></canvas>
+      <span>Piyu’s Playlist Planet</span>
+    </div>
+
+    <!-- PORTAL 2 -->
+    <div class="portal" data-target="gallery.html">
+      <canvas class="portal-canvas"></canvas>
+      <span>Piyu’s Photo Gallery</span>
+    </div>
+
+    <!-- PORTAL 3 -->
+    <div class="portal" data-target="memory.html">
+      <canvas class="portal-canvas"></canvas>
+      <span>PiyuVerse Studio</span>
+    </div>
+
+  </div>
+
+  <!-- PORTAL LOGIC + SOUND (NO FILES REQUIRED) -->
+  <script src="audioManager.js"></script>
+  <script src="portal.js"></script>
+
+</body>
+
+</html>

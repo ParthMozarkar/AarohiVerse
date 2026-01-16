@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>PiyuVerse Studio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Poppins:wght@200;300;400;600&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="memory.css">
+</head>
+
+<body>
+  <!-- FAIRY LIGHTS BACKGROUND -->
+  <div id="fairy-bg"></div>
+
+  <!-- NEURAL DECRYPTION REVEAL (PREMIUM NOIR) -->
+  <div id="neural-overlay">
+    <div class="neural-core">
+      <div class="core-ring"></div>
+      <div class="core-ring"></div>
+      <div class="core-ring"></div>
+      <div class="core-center">
+        <svg viewBox="0 0 100 100">
+          <circle cx="50" cy="50" r="45" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="0.5"
+            stroke-dasharray="2 2" />
+        </svg>
+      </div>
+    </div>
+    <div class="neural-interface">
+      <div class="decryption-text">
+        <span class="status-code">ERR: MEMORY_LOCKED [ENC_04]</span>
+        <h2 class="title">NEURAL LINK</h2>
+        <p class="instruction">HOLD TO SYNC</p>
+      </div>
+      <div class="progress-bar">
+        <div class="progress-fill"></div>
+      </div>
+    </div>
+    <div class="scan-scanner"></div>
+  </div>
+
+  <!-- FLOATING SPARKLES -->
+  <div id="sparkles"></div>
+
+  <!-- MAIN CONTENT -->
+  <div id="memory-container">
+    <h1 class="fairy-title">PiyuVerse Studio</h1>
+    <p class="subtitle">Where memories sparkle</p>
+
+    <!-- MEMORY STARS -->
+    <div id="memory-section">
+      <div class="memory-card">
+        <h2>✨ Memory Stars</h2>
+        <p class="description">Click the stars to unlock memories</p>
+
+        <!-- Memory stars grid -->
+        <div id="memory-stars">
+          <div class="memory-star" data-memory="1">
+            <div class="star-glow"></div>
+            <span>🌟</span>
+          </div>
+          <div class="memory-star" data-memory="2">
+            <div class="star-glow"></div>
+            <span>⭐</span>
+          </div>
+          <div class="memory-star" data-memory="3">
+            <div class="star-glow"></div>
+            <span>✨</span>
+          </div>
+          <div class="memory-star" data-memory="4">
+            <div class="star-glow"></div>
+            <span>💫</span>
+          </div>
+          <div class="memory-star" data-memory="5">
+            <div class="star-glow"></div>
+            <span>🌟</span>
+          </div>
+          <div class="memory-star" data-memory="6">
+            <div class="star-glow"></div>
+            <span>⭐</span>
+          </div>
+        </div>
+
+        <!-- Memory message display -->
+        <div id="memory-message" class="hidden">
+          <p id="memory-text"></p>
+        </div>
+      </div>
+    </div>
+
+    <!-- BACK BUTTON -->
+    <button id="back-btn" onclick="window.location.href='world.html'">
+      ← Back to Piyuverse
+    </button>
+  </div>
+
+  <script src="audioManager.js"></script>
+  <script src="memory.js"></script>
+</body>
+
+</html>

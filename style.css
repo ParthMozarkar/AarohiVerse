@@ -35,11 +35,11 @@ body {
 
 /* TITLE (no animation here, JS handles it) */
 #title {
-  font-size: 52px;
+  font-size: clamp(32px, 8vw, 52px);
   font-weight: 700;
   letter-spacing: 1.5px;
   color: #fff;
-  text-shadow: 0 0 15px rgba(255,150,200,0.4);
+  text-shadow: 0 0 15px rgba(255, 150, 200, 0.4);
   white-space: nowrap;
   overflow: hidden;
   margin-bottom: 20px;
@@ -47,18 +47,20 @@ body {
 
 /* MESSAGE TEXT ABOVE COUNTDOWN */
 #message {
-  font-size: 16px;
+  font-size: clamp(14px, 4vw, 16px);
   opacity: 0.85;
   margin-bottom: 20px;
+  padding: 0 15px;
 }
 
 /* COUNTDOWN */
 #countdown {
-  font-size: 20px;
+  font-size: clamp(14px, 5vw, 20px);
   font-weight: 500;
   letter-spacing: 1px;
   margin-bottom: 30px;
   transition: opacity 0.6s ease;
+  padding: 0 10px;
 }
 
 /* BUTTON */
@@ -68,7 +70,7 @@ button {
   background: rgba(255, 180, 210, 0.15);
   color: #fff;
   border: 1px solid rgba(255, 150, 200, 0.4);
-  font-size: 16px;
+  font-size: clamp(14px, 4vw, 16px);
   letter-spacing: 1px;
   font-weight: 600;
   backdrop-filter: blur(8px);
@@ -99,13 +101,14 @@ button.enabled {
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 600px;
-  height: 600px;
+  width: min(600px, 120vw);
+  height: min(600px, 120vw);
   transform: translate(-50%, -50%);
   background: radial-gradient(circle, rgba(255, 150, 200, 0.2) 0%, transparent 75%);
   filter: blur(80px);
   z-index: -1;
-  pointer-events: none; /* FIX button clicks */
+  pointer-events: none;
+  /* FIX button clicks */
 }
 
 /* NOT YET MESSAGE */
@@ -117,7 +120,7 @@ button.enabled {
   opacity: 0;
   transition: opacity 0.6s ease;
   font-weight: 500;
-  text-shadow: 0 0 10px rgba(255,150,200,0.4);
+  text-shadow: 0 0 10px rgba(255, 150, 200, 0.4);
   position: relative;
   z-index: 10;
   text-align: center;
@@ -132,70 +135,123 @@ body::after {
   pointer-events: none;
 }
 
-/* -------------------------
-   MOBILE RESPONSIVE FIXES
---------------------------*/
+/* RESPONSIVE ADJUSTMENTS */
 @media (max-width: 768px) {
-
-  body {
-    padding: 0 10px;
-    overflow-x: hidden;
-  }
-
   #gate {
-    max-width: 100%;
-    padding: 0 10px;
+    max-width: 95%;
   }
+}
 
+@media (max-width: 480px) {
   #title {
-    font-size: 32px;
-    letter-spacing: 1px;
-    text-align: center;
-    white-space: normal;   /* allow wrapping on small screens */
-    line-height: 1.2;
+    letter-spacing: 0.5px;
   }
 
   .small {
     font-size: 12px;
     letter-spacing: 2px;
   }
+}
 
-  #message {
-    font-size: 14px;
-  }
+/* TRANSITION OVERLAY */
+#transition-overlay {
+  position: fixed;
+  inset: 0;
+  background: #000;
+  z-index: 1000;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.5s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  will-change: opacity;
+}
 
-  #countdown {
-    font-size: 16px;
-    letter-spacing: 0.5px;
-    margin-bottom: 25px;
-  }
+#transition-overlay.active {
+  opacity: 1;
+  pointer-events: all;
+}
 
-  button {
-    width: 90%;
-    padding: 12px 20px;
-    font-size: 14px;
-  }
+.loader-content {
+  text-align: center;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
 
-  #notYet {
-    font-size: 12px;
+#transition-overlay.active .loader-content {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.loader-ring {
+  width: 60px;
+  height: 60px;
+  border: 1px solid rgba(255, 216, 153, 0.2);
+  border-top: 1px solid #ffd899;
+  border-radius: 50%;
+  margin: 0 auto 20px;
+  animation: spin 1s linear infinite;
+  box-shadow: 0 0 15px rgba(255, 216, 153, 0.1);
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
   }
 }
 
-/* Extra-small devices */
-@media (max-width: 480px) {
+.loader-text {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 10px;
+  letter-spacing: 4px;
+  color: rgba(255, 255, 255, 0.6);
+  text-transform: uppercase;
+}
 
-  #title {
-    font-size: 26px;
-    line-height: 1.2;
+.loader-progress {
+  font-family: 'Courier New', monospace;
+  font-size: 24px;
+  color: #ffd899;
+  margin-top: 10px;
+  font-weight: 300;
+}
+
+/* WARP ANIMATION FOR GATE - OPTIMIZED */
+.warp-out {
+  will-change: transform, opacity;
+  animation: warpOut 0.8s cubic-bezier(0.7, 0, 0.3, 1) forwards;
+}
+
+@keyframes warpOut {
+  0% {
+    transform: scale(1);
+    opacity: 1;
   }
 
-  #countdown {
-    font-size: 14px;
+  100% {
+    transform: scale(1.5);
+    opacity: 0;
+  }
+}
+
+/* BUTTON PULSE WHEN ENABLED - SMOOTHED */
+button.enabled {
+  will-change: transform, box-shadow;
+  animation: pulseEnabled 2s infinite;
+}
+
+@keyframes pulseEnabled {
+  0% {
+    box-shadow: 0 0 0 0 rgba(255, 150, 200, 0.5);
   }
 
-  button {
-    width: 100%;
-    font-size: 13px;
-    padding: 12px 15px;
+  70% {
+    box-shadow: 0 0 0 15px rgba(255, 150, 200, 0);
+  }
+
+  100% {
+    box-shadow: 0 0 0 0 rgba(255, 150, 200, 0);
   }
 }
