@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /* RESET + FONT */
 * {
   margin: 0;
@@ -255,3 +256,238 @@ button.enabled {
     box-shadow: 0 0 0 0 rgba(255, 150, 200, 0);
   }
 }
+=======
+/* RESET + FONT */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Montserrat', sans-serif;
+}
+
+body {
+  background: radial-gradient(circle at top, #111, #000);
+  color: #f5f5f5;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+/* MAIN CONTAINER */
+#gate {
+  text-align: center;
+  max-width: 90%;
+  position: relative;
+  z-index: 2;
+}
+
+/* SMALL TEXT */
+.small {
+  font-size: 14px;
+  opacity: 0.8;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+/* TITLE (no animation here, JS handles it) */
+#title {
+  font-size: 52px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  color: #fff;
+  text-shadow: 0 0 15px rgba(255,150,200,0.4);
+  white-space: nowrap;
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+
+/* MESSAGE TEXT ABOVE COUNTDOWN */
+#message {
+  font-size: 16px;
+  opacity: 0.85;
+  margin-bottom: 20px;
+}
+
+/* COUNTDOWN */
+#countdown {
+  font-size: 20px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  margin-bottom: 30px;
+  transition: opacity 0.6s ease;
+}
+
+/* BUTTON */
+button {
+  padding: 14px 40px;
+  border-radius: 50px;
+  background: rgba(255, 180, 210, 0.15);
+  color: #fff;
+  border: 1px solid rgba(255, 150, 200, 0.4);
+  font-size: 16px;
+  letter-spacing: 1px;
+  font-weight: 600;
+  backdrop-filter: blur(8px);
+  cursor: not-allowed;
+  opacity: 0.7;
+  transition: 0.4s ease;
+}
+
+button.enabled {
+  background: linear-gradient(135deg, #ff99cc, #ff69b4);
+  color: #000;
+  border: none;
+  opacity: 1;
+  cursor: pointer;
+  transform: translateY(-2px);
+}
+
+/* 3D CANVAS LAYER */
+#bg {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+}
+
+/* LIGHT BEHIND TEXT (GLOW AURA) */
+#gate::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 600px;
+  height: 600px;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(circle, rgba(255, 150, 200, 0.2) 0%, transparent 75%);
+  filter: blur(80px);
+  z-index: -1;
+  pointer-events: none; /* FIX button clicks */
+}
+
+#notYet {
+  margin-top: 15px;
+  font-size: 14px;
+  color: #ff9acd;
+  letter-spacing: 1px;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  font-weight: 500;
+  text-shadow: 0 0 10px rgba(255,150,200,0.4);
+}
+
+
+/* CENTER SPOTLIGHT */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(circle at center, rgba(255, 175, 205, 0.12), transparent 70%);
+  pointer-events: none;
+}
+/* -------------------------
+   MOBILE RESPONSIVE FIXES
+--------------------------*/
+@media (max-width: 768px) {
+
+  body {
+    padding: 0 10px;
+    overflow-x: hidden;
+  }
+
+  #gate {
+    max-width: 100%;
+    padding: 0 10px;
+  }
+
+  #title {
+    font-size: 32px;
+    letter-spacing: 1px;
+    text-align: center;
+    white-space: normal;   /* allow wrapping on small screens */
+    line-height: 1.2;
+  }
+
+  .small {
+    font-size: 12px;
+    letter-spacing: 2px;
+  }
+
+  #message {
+    font-size: 14px;
+  }
+
+  #countdown {
+    font-size: 16px;
+    letter-spacing: 0.5px;
+    margin-bottom: 25px;
+  }
+
+  button {
+    width: 90%;
+    padding: 12px 20px;
+    font-size: 14px;
+  }
+
+  #notYet {
+    font-size: 12px;
+  }
+}
+
+/* Extra-small devices */
+@media (max-width: 480px) {
+
+  #title {
+    font-size: 26px;
+    line-height: 1.2;
+  }
+
+  #countdown {
+    font-size: 14px;
+  }
+
+  button {
+    width: 100%;
+    font-size: 13px;
+    padding: 12px 15px;
+  }
+}
+/* LOCK ICON STYLE */
+.lock-icon {
+  margin-right: 8px;
+  font-size: 18px;
+  opacity: 0.8;
+  display: inline-block;
+  transform: translateY(0);
+  animation: lockBounce 2s ease-in-out infinite;
+  transition: opacity 0.3s ease, filter 0.3s ease;
+}
+
+/* Glow on hover when locked */
+button:disabled:hover .lock-icon {
+  opacity: 1;
+  filter: drop-shadow(0 0 6px rgba(255,150,200,0.8));
+}
+
+/* Bounce animation (subtle, premium) */
+@keyframes lockBounce {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-3px); }
+  100% { transform: translateY(0); }
+}
+
+/* Hide lock when button becomes enabled */
+button.enabled .lock-icon {
+  opacity: 0;
+  animation: none;
+  width: 0;
+  margin: 0;
+  overflow: hidden;
+}
+
+
+
+
+>>>>>>> 6c4b6cd2cb56615b74cc0cf362400693e8efe4bf
